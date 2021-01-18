@@ -15,14 +15,14 @@ const rowsFromDB = [
   },
 ];
 
-const itemsFromDB = [
+const itemsFromDB = [ 
   {
     id: '1',
     label: 'Item 1',
     rowId: '1',
     time: {
       start: GSTC.api.date('2020-01-01 00:00:00').valueOf(),
-      end: GSTC.api.date('2020-01-01 00:00:00').endOf('hour').valueOf(),
+      end: GSTC.api.date('2020-01-01 00:00:00').endOf('hour').valueOf(), // 控制项目的日月
     },
   },
   {
@@ -40,7 +40,10 @@ const columnsFromDB = [
   {
     id: 'id',
     label: 'ID',
-    data: ({ row }) => Number(GSTC.api.sourceID(row.id)), // show original id
+    data: ({ row }) => {
+      return Number(GSTC.api.sourceID(row.id))
+    }
+    , // show original id
     sortable: ({ row }) => Number(GSTC.api.sourceID(row.id)), // sort by id converted to number
     width: 80,
     header: {
@@ -65,7 +68,7 @@ const hours = [
     period: 'hour',
     periodIncrement: 1,
     format({ timeStart }) {
-      return timeStart.format('HH:mm DD MMMM YYYY'); // full list of formats: https://day.js.org/docs/en/display/format
+      return timeStart.format('HH:mm DD dddd MMMM YYYY'); // full list of formats: https://day.js.org/docs/en/display/format
     },
   },
 ];
@@ -82,6 +85,8 @@ const minutes = [
   },
 ];
 
+// 'HH:mm' 换成日 然后使用该方法去点击出来
+
 // Configuration object
 const config = {
   // for free key for your domain please visit https://gstc.neuronet.io/free-key
@@ -96,7 +101,7 @@ const config = {
     },
     rows: GSTC.api.fromArray(rowsFromDB),
   },
-  chart: {
+  chart: { 
     items: GSTC.api.fromArray(itemsFromDB),
     calendarLevels: [hours, minutes],
     time: {

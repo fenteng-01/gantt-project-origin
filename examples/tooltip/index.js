@@ -34,7 +34,7 @@ const items = [
     rowId: '1',
     time: {
       start: GSTC.api.date('2020-01-01').startOf('day').valueOf(),
-      end: GSTC.api.date('2020-01-06').endOf('day').valueOf(),
+      end: GSTC.api.date('2020-01-02').endOf('day').valueOf(),
     },
   },
   {
