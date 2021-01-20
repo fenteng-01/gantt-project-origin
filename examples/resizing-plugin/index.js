@@ -127,8 +127,8 @@ function limitTime(item, oldItem) {
 
 function snapToTimeSeparately(item) {
   if (!item.snap) return item;
-  const start = GSTC.api.date(item.time.start).startOf('day').add(10, 'hour');
-  const end = GSTC.api.date(item.time.end).startOf('day').add(18, 'hour');
+  const start = GSTC.api.date(item.time.start).startOf('day').add(0, 'hour'); // 10
+  const end = GSTC.api.date(item.time.end).startOf('day').add(24, 'hour'); // 18
   item.time.start = start.valueOf();
   item.time.end = end.valueOf();
   // to change other properties than time we need to update item
@@ -156,7 +156,6 @@ const state = GSTC.api.stateFromConfig({
     ItemResizing({
       events: {
         onStart({ items }) {
-          console.log('Resizing start', items.after);
           return items.after;
         },
         onResize({ items }) {
@@ -172,7 +171,6 @@ const state = GSTC.api.stateFromConfig({
           return filtered;
         },
         onEnd({ items }) {
-          console.log('Resizing done', items.after);
           return items.after;
         },
       },
@@ -197,6 +195,7 @@ const state = GSTC.api.stateFromConfig({
     },
     rows: GSTC.api.fromArray(rowsFromDB),
   },
+
   chart: {
     items: GSTC.api.fromArray(itemsFromDB),
   },

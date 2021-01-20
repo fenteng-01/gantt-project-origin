@@ -21,7 +21,7 @@ const itemsFromDB = [
     label: 'Item 1',
     rowId: '1',
     time: {
-      start: GSTC.api.date('2020-02-01').startOf('day').valueOf(),
+      start: GSTC.api.date('2020-02-01').startOf('day').valueOf(), // *
       end: GSTC.api.date('2020-02-06').endOf('day').valueOf(),
     },
   },
@@ -77,7 +77,7 @@ const columnsFromDB = [
   },
 ];
 
-const months = [
+const months = [  // *
   {
     zoomTo: 100, // we want to display this format for all zoom levels until 100
     period: 'month',
@@ -126,7 +126,7 @@ const config = {
     items: GSTC.api.fromArray(itemsFromDB),
     calendarLevels: [months, days],
     time: {
-      zoom: 24,
+      zoom:24,
       from: GSTC.api.date('2020-01-01').valueOf(),
       to: GSTC.api.date('2020-01-01').endOf('year').valueOf(),
     },

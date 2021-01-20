@@ -75,7 +75,7 @@ const hours = [
 
 const minutes = [
   {
-    zoomTo: 100, // we want to display this format for all zoom levels until 100
+    zoomTo: 100, // we want to display this format git for all zoom levels until 100
     period: 'minute',
     periodIncrement: 15,
     main: true,
@@ -84,8 +84,6 @@ const minutes = [
     },
   },
 ];
-
-// 'HH:mm' 换成日 然后使用该方法去点击出来
 
 // Configuration object
 const config = {
