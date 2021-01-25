@@ -221,6 +221,7 @@ const config = {
 
 let gstc;
 let state = GSTC.api.stateFromConfig(config);
+
 (async function mountGSTC() {
   const element = document.getElementById('gstc');
 

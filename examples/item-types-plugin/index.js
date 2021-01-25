@@ -110,7 +110,7 @@ const config = {
     TimelinePointer(),
     Selection(),
     ItemResizing({
-      snapToTime: {
+      snapToTime: { // 设置start和end不用调天.而可以调到比天小的小时制.
         start({ startTime }) {
           return startTime;
         },

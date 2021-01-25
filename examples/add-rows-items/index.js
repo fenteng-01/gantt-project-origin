@@ -1,8 +1,9 @@
 import GSTC from '../../dist/gstc.esm.min.js';
 
-const iterations = 100;
+const iterations = 6;
 
 const startDate = GSTC.api.date().subtract(5, 'month').valueOf();
+// startDate -> 1598318499029
 
 let gstc, state;
 
@@ -81,10 +82,14 @@ function generateNewRows() {
   return rows;
 }
 
+// 理解该函数的处理过程,
+// addNewRow() 调用 generateNewRow() 去生成行
+// TODO: lastRowId  是什么？
 function generateNewRow() {
+  let lastRowIdCopy = lastRowId
   return {
-    id: GSTC.api.GSTCID(String(lastRowId++)),
-    label: `Row ${lastRowId}`,
+    id: GSTC.api.GSTCID(String(lastRowIdCopy)),
+    label: `Row ${lastRowId++}`,
   };
 }
 
@@ -171,6 +176,7 @@ function setNewRows() {
 // @ts-ignore
 window.setNewRows = setNewRows;
 
+// TODO: state.update(`config.list.rows.${row.id}`, row); 的功能?
 function addNewRow() {
   const row = generateNewRow();
   state.update(`config.list.rows.${row.id}`, row);
